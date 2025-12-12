@@ -57,5 +57,8 @@
     "saxon-js": "2",
     "uglify-js": "3",
     "xslt3": "2.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
