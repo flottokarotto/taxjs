@@ -17,6 +17,9 @@ try {
         from: /.*import.*;.*/g,
         to: ' ',
     }).pipe({ from: /.*export class/, to: 'class' })
+    // allow access from helper methods / other generated files
+    .pipe({ from: /private\s+static\s+readonly\s+(_[a-zA-Z]+)/g, to: 'public static readonly $1' })
+    .pipe({ from: /private\s+static\s+readonly\s+typeDirectory/g, to: 'public static readonly typeDirectory' })
     //.pipe({ from: /(Lohnsteuer[a-zA-Z0-9]+Big)/g, to: "$1Js"});
 
     console.log('Count of matches by paths: ', countOfMatchesByPaths);
